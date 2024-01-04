@@ -1,0 +1,85 @@
+<resources>
+    <string name="app_name">Recipe Book</string>
+
+    //pasta
+
+    <string name="pastaIngredients">Pasta
+\nCream Cheese
+\nParmesan Cheese
+\nOlive Oil
+\nGarlic
+\nSalt Pepper</string>
+    <string name="pastaDesc">Cook your pasta until al dente
+\nSaute’ garlic in olive oil until fragrant
+\nAdd cream cheese, pasta cooking water, parmesan, and stir well
+\nDrain and add pasta to the skillet
+\nToss until well combined, adding some pasta water if needed</string>
+
+    //maggi
+
+    <string name="maggiIngredients">Maggi Noodles
+\nWater
+\nMaggi Masala</string>
+
+    <string name="maggieDesc">Add one and half cup of water
+\nAdd maggi noodles and boil it
+\nAdd the maggi masala on to it
+\nWait for 2 mins
+\nMaggi is ready!</string>
+
+    //cake
+
+    <string name="cakeIngredients">Maggi Noodles
+\nWater
+\nMaggi Masala</string>
+    <string name="cakeDesc">Add one and half cup of water
+Add maggi noodles and boil it
+Add the maggi masala on to it
+\nWait for 2 mins
+\nMaggi is ready!</string>
+
+    //pancake
+
+    <string name="pancakeIngredients">Maggi Noodles
+\nWater
+\nMaggi Masala</string>
+    <string name="pancakeDesc">Add one and half cup of water
+Add maggi noodles and boil it
+Add the maggi masala on to it
+\nWait for 2 mins
+\nMaggi is ready!</string>
+
+    //pizza
+
+    <string name="pizzaIngredients">Maggi Noodles
+\nWater
+\nMaggi Masala</string>
+    <string name="pizzaDesc">Add one and half cup of water
+Add maggi noodles and boil it
+Add the maggi masala on to it
+\nWait for 2 mins
+\nMaggi is ready!</string>
+
+    //burgers
+
+    <string name="burgerIngredients">Maggi Noodles
+\nWater
+\nMaggi Masala</string>
+    <string name="burgerDesc">Add one and half cup of water
+\nAdd maggi noodles and boil it
+\nAdd the maggi masala on to it
+\nWait for 2 mins
+\nMaggi is ready!</string>
+
+    //fries
+
+    <string name="friesIngredients">Maggi Noodles
+\nWater
+\nMaggi Masala</string>
+    <string name="friesDesc">Add one and half cup of water
+\nAdd maggi noodles and boil it
+\nAdd the maggi masala on to it
+\nWait for 2 mins
+\nMaggi is ready!</string>
+
+</resources>
