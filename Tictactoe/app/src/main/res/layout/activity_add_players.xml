@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="@drawable/pagebkg"
+    tools:context=".AddPlayers">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        app:cardCornerRadius="30dp"
+        app:cardElevation="20dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="center_horizontal"
+            android:padding="12dp"
+            android:background="@drawable/lavender_border">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="ENTER \n PLAYERS NAMES"
+                android:textAlignment="center"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                android:textColor="@color/lavender"/>
+
+            <EditText
+                android:id="@+id/playerOne"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/lavender_border"
+                android:drawableLeft="@drawable/ic_xicon"
+                android:hint="Nhập tên người chơi thứ nhất"
+                android:inputType="text"
+                android:textColor="@color/lavender"
+                android:textStyle="italic"
+                tools:ignore="Autofill,HardcodedText,TextFields"/>
+
+            <EditText
+                android:id="@+id/playerTwo"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/lavender_border"
+                android:drawableLeft="@drawable/ic_xicon"
+                android:hint="Nhập tên người chơi thứ hai"
+                android:inputType="text"
+                android:textColor="@color/lavender"
+                android:textStyle="italic"
+                tools:ignore="Autofill,HardcodedText,TextFields"/>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="30dp"
+                android:id="@+id/startGameButton"
+                android:text="Start Game"
+                android:textSize="18sp"
+                app:cornerRadius = "20dp"/>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>
