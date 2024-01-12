@@ -37,21 +37,24 @@ public class SignupActivity extends AppCompatActivity {
         signupButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(!validateSignUpEmail()|!validateSignUpName()|!validateSignUpUserName()|!validateSignUpPassword()){
+                    Toast.makeText(SignupActivity.this, "Check your data", Toast.LENGTH_SHORT).show();
+                }else{
+                    database = FirebaseDatabase.getInstance();
+                    reference = database.getReference("users");
+                    String name = signupName.getText().toString();
+                    String email = signupEmail.getText().toString();
+                    String username = signupUsername.getText().toString();
+                    String password = signupPassword.getText().toString();
 
-                database = FirebaseDatabase.getInstance();
-                reference = database.getReference("users");
+                    HelperClass helperClass = new HelperClass(name, email, username, password);
+                    reference.child(username).setValue(helperClass);
 
-                String name = signupName.getText().toString();
-                String email = signupEmail.getText().toString();
-                String username = signupUsername.getText().toString();
-                String password = signupPassword.getText().toString();
+                    Toast.makeText(SignupActivity.this, "You have signup successfully!", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(SignupActivity.this, LoginActivity.class);
+                    startActivity(intent);
+                }
 
-                HelperClass helperClass = new HelperClass(name, email, username, password);
-                reference.child(username).setValue(helperClass);
-
-                Toast.makeText(SignupActivity.this, "You have signup successfully!", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(SignupActivity.this, LoginActivity.class);
-                startActivity(intent);
             }
         });
 
@@ -62,5 +65,46 @@ public class SignupActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+    }
+    private  Boolean validateSignUpName(){
+        String val = signupName.getText().toString();
+        if (val.isEmpty()){
+            signupName.setError("Name cannot be empty");
+            return false;
+        } else {
+            signupName.setError(null);
+            return true;
+        }
+    }
+    private Boolean validateSignUpEmail(){
+        String val = signupEmail.getText().toString();
+        if (val.isEmpty()){
+            signupEmail.setError("Email cannot be empty");
+            return false;
+        } else {
+            signupEmail.setError(null);
+            return true;
+        }
+    }
+    private Boolean validateSignUpUserName(){
+        String val = signupUsername.getText().toString();
+        if (val.isEmpty()){
+            signupUsername.setError("Username cannot be empty");
+            return false;
+        } else {
+            signupUsername.setError(null);
+            return true;
+        }
+    }
+    private Boolean validateSignUpPassword(){
+        String val = signupPassword.getText().toString();
+        if (val.isEmpty()){
+            signupPassword.setError("Username cannot be empty");
+            return false;
+        } else {
+            signupPassword.setError(null);
+            return true;
+        }
     }
 }
