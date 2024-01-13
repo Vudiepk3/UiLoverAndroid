@@ -2,8 +2,12 @@ package com.example.loginandsignup;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -37,8 +41,10 @@ public class SignupActivity extends AppCompatActivity {
         signupButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(!validateSignUpEmail()|!validateSignUpName()|!validateSignUpUserName()|!validateSignUpPassword()){
-                    Toast.makeText(SignupActivity.this, "Check your data", Toast.LENGTH_SHORT).show();
+                if (!validateSignUpName() | !validateSignUpEmail() | !validateSignUpUserName() | !validateSignUpPassword()) {
+                        Toast.makeText(SignupActivity.this, "Check your data", Toast.LENGTH_SHORT).show();
+                }else if(!isInPictureInPictureMode()){
+                    Toast.makeText(SignupActivity.this, "Check your internet", Toast.LENGTH_SHORT).show();
                 }else{
                     database = FirebaseDatabase.getInstance();
                     reference = database.getReference("users");
@@ -46,13 +52,18 @@ public class SignupActivity extends AppCompatActivity {
                     String email = signupEmail.getText().toString();
                     String username = signupUsername.getText().toString();
                     String password = signupPassword.getText().toString();
-
                     HelperClass helperClass = new HelperClass(name, email, username, password);
                     reference.child(username).setValue(helperClass);
-
                     Toast.makeText(SignupActivity.this, "You have signup successfully!", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(SignupActivity.this, LoginActivity.class);
-                    startActivity(intent);
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            finish();
+                            Intent intent = new Intent(SignupActivity.this, LoginActivity.class);
+                            startActivity(intent);
+                        }
+                    }, 1000); // 1000 milliseconds = 1 seconds
+
                 }
 
             }
@@ -67,44 +78,38 @@ public class SignupActivity extends AppCompatActivity {
         });
 
     }
-    private  Boolean validateSignUpName(){
-        String val = signupName.getText().toString();
-        if (val.isEmpty()){
-            signupName.setError("Name cannot be empty");
+    private boolean validateInput(EditText editText, String fieldName) {
+        String val = editText.getText().toString().trim();
+        if (val.isEmpty()) {
+            editText.setError(fieldName + " cannot be empty");
             return false;
         } else {
-            signupName.setError(null);
+            editText.setError(null);
             return true;
         }
     }
-    private Boolean validateSignUpEmail(){
-        String val = signupEmail.getText().toString();
-        if (val.isEmpty()){
-            signupEmail.setError("Email cannot be empty");
-            return false;
-        } else {
-            signupEmail.setError(null);
-            return true;
-        }
+
+    private boolean validateSignUpName() {
+        return validateInput(signupName, "Name");
     }
-    private Boolean validateSignUpUserName(){
-        String val = signupUsername.getText().toString();
-        if (val.isEmpty()){
-            signupUsername.setError("Username cannot be empty");
-            return false;
-        } else {
-            signupUsername.setError(null);
-            return true;
-        }
+
+    private boolean validateSignUpEmail() {
+        return validateInput(signupEmail, "Email");
     }
-    private Boolean validateSignUpPassword(){
-        String val = signupPassword.getText().toString();
-        if (val.isEmpty()){
-            signupPassword.setError("Username cannot be empty");
-            return false;
-        } else {
-            signupPassword.setError(null);
-            return true;
-        }
+
+    private boolean validateSignUpUserName() {
+        return validateInput(signupUsername, "Username");
     }
+
+    private boolean validateSignUpPassword() {
+        return validateInput(signupPassword, "Password");
+    }
+    public boolean isInternetConnected() {
+        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return
+                activeNetworkInfo != null && activeNetworkInfo.isConnected();
+    }
+
+
 }
