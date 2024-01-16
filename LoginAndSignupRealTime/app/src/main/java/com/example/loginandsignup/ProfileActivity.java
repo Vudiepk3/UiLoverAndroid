@@ -18,15 +18,25 @@ import com.google.firebase.database.ValueEventListener;
 
 public class ProfileActivity extends AppCompatActivity {
 
-    TextView profileName, profileEmail, profileUsername, profilePassword;
-    TextView titleName, titleUsername;
-    Button editProfile;
+    private  TextView profileName, profileEmail, profileUsername,
+                      profilePassword,titleName, titleUsername;
+    private Button editProfile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+        getID();
+        showUserData();
+        editProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                passUserData();
+            }
+        });
 
+    }
+    private void getID(){
         profileName = findViewById(R.id.profileName);
         profileEmail = findViewById(R.id.profileEmail);
         profileUsername = findViewById(R.id.profileUsername);
@@ -34,35 +44,39 @@ public class ProfileActivity extends AppCompatActivity {
         titleName = findViewById(R.id.titleName);
         titleUsername = findViewById(R.id.titleUsername);
         editProfile = findViewById(R.id.editButton);
+    }
+    protected void showUserData(){
+            Intent intent = getIntent();
+            String userUsername = intent.getStringExtra("username");
+            DatabaseReference reference = FirebaseDatabase.getInstance().getReference("users");
+            Query checkUserDatabase = reference.orderByChild("username").equalTo(userUsername);
 
-        showUserData();
+            checkUserDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    if (snapshot.exists()) {
+                        String nameUser = snapshot.child(userUsername).child("name").getValue(String.class);
+                        String emailUser = snapshot.child(userUsername).child("email").getValue(String.class);
+                        String passwordUser = snapshot.child(userUsername).child("password").getValue(String.class);
+                        String usernameUser = snapshot.child(userUsername).child("username").getValue(String.class);
 
-        editProfile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                passUserData();
-            }
-        });
+                        titleName.setText(nameUser);
+                        titleUsername.setText(usernameUser);
+                        profileName.setText(nameUser);
+                        profileEmail.setText(emailUser);
+                        profileUsername.setText(usernameUser);
+                        profilePassword.setText(passwordUser);
+                    }
+                }
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                    // Handle database error
+                }
+            });
     }
 
-    public void showUserData(){
 
-        Intent intent = getIntent();
-
-        String nameUser = intent.getStringExtra("name");
-        String emailUser = intent.getStringExtra("email");
-        String usernameUser = intent.getStringExtra("username");
-        String passwordUser = intent.getStringExtra("password");
-
-        titleName.setText(nameUser);
-        titleUsername.setText(usernameUser);
-        profileName.setText(nameUser);
-        profileEmail.setText(emailUser);
-        profileUsername.setText(usernameUser);
-        profilePassword.setText(passwordUser);
-    }
-
-    public void passUserData(){
+    protected void passUserData(){
         String userUsername = profileUsername.getText().toString().trim();
 
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("users");
@@ -91,7 +105,6 @@ public class ProfileActivity extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
             }
         });
     }

@@ -1,5 +1,6 @@
 package com.example.loginandsignup;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
@@ -15,8 +16,12 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 public class SignupActivity extends AppCompatActivity {
 
@@ -30,19 +35,16 @@ public class SignupActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
+        getID();
+        getWeid();
 
-        signupName = findViewById(R.id.signup_name);
-        signupEmail = findViewById(R.id.signup_email);
-        signupUsername = findViewById(R.id.signup_username);
-        signupPassword = findViewById(R.id.signup_password);
-        signupButton = findViewById(R.id.signup_button);
-        loginRedirectText = findViewById(R.id.loginRedirectText);
-
+    }
+    private void getWeid(){
         signupButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (!validateSignUpName() | !validateSignUpEmail() | !validateSignUpUserName() | !validateSignUpPassword()) {
-                        Toast.makeText(SignupActivity.this, "Check your data", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SignupActivity.this, "Check your data", Toast.LENGTH_SHORT).show();
                 }else if(!isInPictureInPictureMode()){
                     Toast.makeText(SignupActivity.this, "Check your internet", Toast.LENGTH_SHORT).show();
                 }else{
@@ -76,8 +78,16 @@ public class SignupActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
     }
+    private void getID(){
+        signupName = findViewById(R.id.signup_name);
+        signupEmail = findViewById(R.id.signup_email);
+        signupUsername = findViewById(R.id.signup_username);
+        signupPassword = findViewById(R.id.signup_password);
+        signupButton = findViewById(R.id.signup_button);
+        loginRedirectText = findViewById(R.id.loginRedirectText);
+    }
+
     private boolean validateInput(EditText editText, String fieldName) {
         String val = editText.getText().toString().trim();
         if (val.isEmpty()) {
@@ -104,12 +114,12 @@ public class SignupActivity extends AppCompatActivity {
     private boolean validateSignUpPassword() {
         return validateInput(signupPassword, "Password");
     }
-    public boolean isInternetConnected() {
+    private boolean isInternetConnected() {
         ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
         return
                 activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
-
+    
 
 }

@@ -110,7 +110,7 @@ public class MainActivity extends AppCompatActivity {
                             setDefault();
                             Uri uri = Uri.parse("smsto:0932258264");
                             Intent intent = new Intent(Intent.ACTION_SENDTO, uri);
-                            intent.putExtra("sms_body", "The SMS text");
+                            intent.putExtra("sms_body", "Order: " + x.toString());
                             startActivity(intent);
                             return;
                         }
@@ -121,7 +121,7 @@ public class MainActivity extends AppCompatActivity {
                             setDefault();
                             Uri uri = Uri.parse("smsto:0932258264");
                             Intent intent = new Intent(Intent.ACTION_SENDTO, uri);
-                            intent.putExtra("sms_body", "The SMS text");
+                            intent.putExtra("sms_body", "Order: " + x.toString());
                             startActivity(intent);
                             return;
                         }

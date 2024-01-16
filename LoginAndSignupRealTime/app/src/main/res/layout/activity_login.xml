@@ -40,7 +40,7 @@
                 android:layout_height="50dp"
                 android:id="@+id/login_username"
                 android:background="@drawable/lavender_border"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="30dp"
                 android:padding="8dp"
                 android:hint="Username"
                 android:drawableLeft="@drawable/ic_baseline_person_pin_24"

@@ -41,12 +41,17 @@ public class LoginActivity extends AppCompatActivity {
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (!validateUsername() | !validatePassword()){
-                }else if(!isInternetConnected()){
-                    Toast.makeText(LoginActivity.this, "Check your internet", Toast.LENGTH_SHORT).show();
-                } else {
-                    checkUser();
+                try {
+                    if (!validateUsername() | !validatePassword()){
+                    }else if(!isInternetConnected()){
+                        Toast.makeText(LoginActivity.this, "Check your internet", Toast.LENGTH_SHORT).show();
+                    } else {
+                        checkUser();
+                    }
+                }catch (Exception e){
+                    Toast.makeText(LoginActivity.this, "Have a problem", Toast.LENGTH_SHORT).show();
                 }
+
             }
         });
 
@@ -59,7 +64,7 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-    public Boolean validateUsername(){
+    private Boolean validateUsername(){
         String val = loginUsername.getText().toString();
         if (val.isEmpty()){
             loginUsername.setError("Username cannot be empty");
@@ -69,8 +74,7 @@ public class LoginActivity extends AppCompatActivity {
             return true;
         }
     }
-
-    public Boolean validatePassword(){
+    private Boolean validatePassword(){
         String val = loginPassword.getText().toString();
         if (val.isEmpty()){
             loginPassword.setError("Password cannot be empty");
@@ -80,8 +84,7 @@ public class LoginActivity extends AppCompatActivity {
             return true;
         }
     }
-
-    public void checkUser(){
+    private void checkUser(){
         String userUsername = loginUsername.getText().toString().trim();
         String userPassword = loginPassword.getText().toString().trim();
 
@@ -124,7 +127,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
-    public boolean isInternetConnected() {
+    private boolean isInternetConnected() {
         ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
         return

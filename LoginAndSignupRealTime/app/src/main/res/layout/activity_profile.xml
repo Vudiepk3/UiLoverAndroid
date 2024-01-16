@@ -64,7 +64,7 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
+                android:layout_margin="5dp"
                 android:layout_weight="1"
                 android:elevation="5dp"
                 android:padding="8dp"
@@ -95,7 +95,7 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
+                android:layout_margin="5dp"
                 android:layout_weight="1"
                 android:elevation="5dp"
                 android:padding="8dp"
@@ -126,7 +126,7 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
+                android:layout_margin="5dp"
                 android:layout_weight="1"
                 android:elevation="5dp"
                 android:padding="8dp"
@@ -160,8 +160,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:padding="8dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
             android:layout_marginTop="10dp"
             android:orientation="horizontal">
 
@@ -197,7 +195,6 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="10dp"
             android:padding="8dp"
             android:orientation="horizontal">
 
@@ -233,7 +230,6 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="10dp"
             android:padding="8dp"
             android:orientation="horizontal">
 
@@ -269,7 +265,6 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="10dp"
             android:padding="8dp"
             android:orientation="horizontal">
 
@@ -288,6 +283,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/profilePassword"
                 android:text="password"
+                android:inputType="textPassword"
                 android:layout_weight="1"
                 android:textAlignment="viewEnd"
                 android:textColor="@color/grey"
@@ -305,9 +301,11 @@
         android:text="Edit Profile"
         android:textSize="18sp"
         app:cornerRadius="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@id/linearLayout"
-        app:layout_constraintStart_toStartOf="@id/linearLayout"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginTop="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/linearLayout"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
