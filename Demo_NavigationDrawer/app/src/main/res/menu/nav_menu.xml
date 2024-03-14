@@ -3,33 +3,21 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn = "navigation_view">
-
     <group
         android:checkableBehavior="single">
-
         <item
-            android:id="@+id/nav_home"
-            android:icon="@drawable/baseline_home"
-            android:title="Home"/>
-
-        <item
-            android:id="@+id/nav_settings"
-            android:icon="@drawable/baseline_settings"
-            android:title="Settings"/>
-
+            android:id="@+id/nav_about"
+            android:icon="@drawable/baseline_person"
+            android:title="Thay đổi thông tin cá nhân"/>
         <item
             android:id="@+id/nav_share"
             android:icon="@drawable/baseline_share"
-            android:title="Share"/>
+            android:title="Chia sẻ ứng dụng"/>
 
         <item
-            android:id="@+id/nav_about"
-            android:icon="@drawable/baseline_about"
-            android:title="About Us"/>
-        <item
             android:id="@+id/nav_evaluate"
-            android:icon="@drawable/baseline_share"
-            android:title="Đánh giá"/>
+            android:icon="@drawable/baseline_vote"
+            android:title="Xếp hạng ứng dụng"/>
 
         <item
             android:id="@+id/nav_feedback"
@@ -42,7 +30,7 @@
             <item
                 android:id="@+id/nav_logout"
                 android:icon="@drawable/baseline_logout"
-                android:title="Logout"/>
+                android:title="Đăng xuất"/>
         </menu>
 
     </item>
