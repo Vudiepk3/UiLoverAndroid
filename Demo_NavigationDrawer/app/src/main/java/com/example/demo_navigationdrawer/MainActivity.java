@@ -22,7 +22,12 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import com.denzcoskun.imageslider.ImageSlider;
+import com.denzcoskun.imageslider.constants.ScaleTypes;
+import com.denzcoskun.imageslider.models.SlideModel;
 import com.google.android.material.navigation.NavigationView;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private DrawerLayout drawerLayout;
@@ -30,12 +35,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.test);
 
         drawerLayout = findViewById(R.id.drawer_layout);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("");
 
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
@@ -43,6 +49,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.open_nav, R.string.close_nav);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
+        autoImageslide();
     }
 
     @Override
@@ -122,5 +129,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             Toast.makeText(this, "Lỗi", Toast.LENGTH_SHORT).show();
             e.printStackTrace();
         }
+    }
+    private void autoImageslide(){
+        ImageSlider imageSlider = findViewById(R.id.ImageSlide);
+        ArrayList<SlideModel> slideModels = new ArrayList<>();
+
+        slideModels.add(new SlideModel(R.drawable.image1, ScaleTypes.FIT));
+        slideModels.add(new SlideModel(R.drawable.image2, ScaleTypes.FIT));
+        slideModels.add(new SlideModel(R.drawable.image3, ScaleTypes.FIT));
+        slideModels.add(new SlideModel(R.drawable.image4, ScaleTypes.FIT));
+        slideModels.add(new SlideModel(R.drawable.image5, ScaleTypes.FIT));
+        imageSlider.setImageList(slideModels,ScaleTypes.FIT);
     }
 }

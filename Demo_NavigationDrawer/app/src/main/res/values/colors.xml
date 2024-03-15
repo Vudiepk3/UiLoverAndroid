@@ -8,4 +8,16 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="lavender">#8692f7</color>
+    <color name="blue">#00BFFF</color>
+    <color name="blue2">#32CEE3</color>
+    <color name="blue3">#08C3DA</color>
+    <color name="blue_1">#BFD6F6</color>
+    <color name="blue_2">#8DBDFF</color>
+    <color name="blue_3">#64A1F4</color>
+    <color name="blue_4">#4A91F2</color>
+    <color name="blue_5">#3B7DD8</color>
+    <color name="light_blue">#4316C0F9</color>
+    <color name="red">#F44336</color>
+    <color name="gray">#DCDCDC</color>
+    <color name="blueText">#00BFFF</color>
 </resources>
