@@ -1,0 +1,9 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.Demo_DarkMode" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="background_color">#FFFFFF</item>
+        <item name="text_color">#000000</item>
+    </style>
+
+    <style name="Theme.Demo_DarkMode" parent="Base.Theme.Demo_DarkMode" />
+</resources>

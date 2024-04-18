@@ -31,8 +31,7 @@
                         android:layout_height="200dp"
                         app:iss_period="1500"
                         app:iss_auto_cycle="true"
-                        app:iss_delay="2500"
-                        app:iss_corner_radius="20"
+                        app:iss_delay="3000"
                         app:iss_title_background="@drawable/gradient"/>
                 </androidx.cardview.widget.CardView>
             </RelativeLayout>
@@ -156,14 +155,13 @@
                             app:layout_constraintStart_toEndOf="@id/iv_points_icon"
                             app:layout_constraintTop_toBottomOf="@id/tvPoints" />
                     </androidx.constraintlayout.widget.ConstraintLayout>
-
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
             <TextView
                 android:id="@+id/textView1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="335dp"
+                android:layout_marginTop="290dp"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
                 android:text="Let's Play"
@@ -172,6 +170,7 @@
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/linearLayoutButton" />
+
         </FrameLayout>
 
         <FrameLayout

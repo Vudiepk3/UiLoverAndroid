@@ -7,11 +7,7 @@
         android:title="Home"
         android:icon="@drawable/ic_home"/>
 
-    <item
-        android:id="@+id/shorts"
-        android:title="Shorts"
-        android:icon="@drawable/ic_baseline_whatshot_24"
-        />
+
 
     <item
         android:title=""/>
@@ -20,9 +16,6 @@
         android:id="@+id/subscriptions"
         android:title="Subscriptions"
         android:icon="@drawable/ic_baseline_subscriptions_24" />
-    <item
-        android:id="@+id/library"
-        android:title="Library"
-        android:icon="@drawable/ic_baseline_video_library_24" />
+
 
 </menu>
