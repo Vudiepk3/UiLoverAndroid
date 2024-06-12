@@ -1,0 +1,49 @@
+{
+  "project_info": {
+    "project_number": "273555114212",
+    "firebase_url": "https://fir-adminbookapp-default-rtdb.firebaseio.com",
+    "project_id": "fir-adminbookapp",
+    "storage_bucket": "fir-adminbookapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:273555114212:android:d5f5d1e65761a5eed244f1",
+        "android_client_info": {
+          "package_name": "com.example.demo_adminbookapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDWE6SomDz6Z_-2OJc2GhEalco01-BCu6E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:273555114212:android:a7112693b48b1892d244f1",
+        "android_client_info": {
+          "package_name": "com.example.demo_bookappwithfirebase"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDWE6SomDz6Z_-2OJc2GhEalco01-BCu6E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

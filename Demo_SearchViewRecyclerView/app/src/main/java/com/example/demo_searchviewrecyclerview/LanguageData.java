@@ -9,6 +9,7 @@ public class LanguageData {
         this.logo = logo;
     }
 
+
     public String getTitle() {
         return title;
     }
