@@ -1,4 +1,4 @@
-package com.example.demo_slideimagewithfirebase;
+package com.example.demo_slideimagewithfirebase.model;
 
 public class BannerImageModel {
 

@@ -6,4 +6,8 @@
     </style>
 
     <style name="Theme.Demo_SlideImageWithFirebase" parent="Base.Theme.Demo_SlideImageWithFirebase" />
+    <style name="roundedImageViewRounded">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
 </resources>

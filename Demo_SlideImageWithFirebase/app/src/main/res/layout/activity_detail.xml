@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".DetailActivity">
+
+
+    <ImageView
+        android:layout_width="400dp"
+        android:layout_height="200dp"
+        android:id="@+id/detailImage"
+        android:padding="8dp"
+        android:layout_gravity="center"
+        android:src="@drawable/baseline_cloud_upload_24"
+        android:scaleType="fitXY" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:padding="20dp"
+        android:text="Name Image"
+        android:layout_gravity="center"
+        android:id="@+id/detailNameImage"
+        android:textColor="@color/lavender"
+        android:background="@drawable/lavender_border"
+        android:textSize="18sp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:padding="20dp"
+        android:text="Link Web"
+        android:layout_gravity="center"
+        android:id="@+id/detailLinkWeb"
+        android:textColor="@color/lavender"
+        android:background="@drawable/lavender_border"
+        android:textSize="18sp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:padding="20dp"
+        android:text="Note"
+        android:layout_gravity="center"
+        android:id="@+id/detailNoteImage"
+        android:textColor="@color/lavender"
+        android:background="@drawable/lavender_border"
+        android:textSize="18sp"/>
+
+</LinearLayout>

@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Demo_SlideImageWithFirebase</string>
+    <string name="todo" />
 </resources>

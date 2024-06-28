@@ -1,136 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
-    android:layout_marginTop="10dp"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="40dp"
         android:orientation="vertical">
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="10dp"
+            app:cardElevation="20dp"
+            app:cardCornerRadius="30dp">
+            <com.denzcoskun.imageslider.ImageSlider
+                android:id="@+id/ImageSlide1"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                app:iss_period="1500"
+                app:iss_auto_cycle="true"
+                app:iss_delay="2500"
+                app:iss_corner_radius="20"
+                app:iss_title_background="@drawable/gradient"/>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="10dp"
+            app:cardElevation="20dp"
+            app:cardCornerRadius="30dp">
+            <com.denzcoskun.imageslider.ImageSlider
+                android:id="@+id/ImageSlide2"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                app:iss_period="1500"
+                app:iss_auto_cycle="true"
+                app:iss_delay="2500"
+                app:iss_corner_radius="20"
+                app:iss_title_background="@drawable/gradient"/>
+        </androidx.cardview.widget.CardView>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <TextView
-                android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="20dp">
+            <Button
+                android:id="@+id/imageSlide1"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:textColor="@color/black"
-                android:layout_marginTop="10dp"
-                android:layout_marginStart="10dp"
-                android:text="Upload Banner Image One"/>
-
-            <ImageView
-                android:id="@+id/imageOne"
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:src="@drawable/icon_image_24"/>
+                android:layout_weight="1"
+                android:textSize="20dp"
+                android:text="Image">
+            </Button>
 
             <Button
-                android:id="@+id/btnUploadImageOne"
-                android:layout_width="match_parent"
+                android:id="@+id/imageSlide2"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="Upload Image One"/>
-        
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:textColor="@color/black"
-                android:layout_marginTop="10dp"
-                android:layout_marginStart="10dp"
-                android:text="Upload Banner Image Two"/>
-
-            <ImageView
-                android:id="@+id/imageTwo"
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:src="@drawable/icon_image_24"/>
-
-            <Button
-                android:id="@+id/btnUploadImageTwo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="Upload Image Two"/>
+                android:layout_weight="1"
+                android:textSize="14dp"
+                android:text="Image + Link + Note">
+            </Button>
 
         </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:textColor="@color/black"
-                android:layout_marginTop="10dp"
-                android:layout_marginStart="10dp"
-                android:text="Upload Banner Image Three"/>
-
-            <ImageView
-                android:id="@+id/imageThree"
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:src="@drawable/icon_image_24"/>
-
-            <Button
-                android:id="@+id/btnUploadImageThree"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="Upload Image Three"/>
-
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:textColor="@color/black"
-                android:layout_marginTop="10dp"
-                android:layout_marginStart="10dp"
-                android:text="Upload Banner Image Four"/>
-
-            <ImageView
-                android:id="@+id/imageFour"
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:src="@drawable/icon_image_24"/>
-
-            <Button
-                android:id="@+id/btnUploadImageFour"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="40dp"
-                android:text="Upload Image Four"/>
-
-        </LinearLayout>
-
     </LinearLayout>
 
-</ScrollView>
+</RelativeLayout>
