@@ -13,6 +13,9 @@
         android:theme="@style/Theme.Demo_SlideImageWithFirebase"
         tools:targetApi="31">
         <activity
+            android:name=".UpdateActivity"
+            android:exported="false" />
+        <activity
             android:name=".UploadActivity"
             android:exported="false" />
         <activity

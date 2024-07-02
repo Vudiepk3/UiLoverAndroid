@@ -1,39 +1,18 @@
 package com.example.demo_slideimagewithfirebase.model;
 
 public class ImageModel {
-    private String  urlImage,nameImgae,noteImage,linkWebsite;
-    public ImageModel(String urlImage, String nameImgae, String noteImage) {
+
+    private String urlImage,nameImage,linkWeb,noteImage,key;
+
+    public ImageModel(String urlImage, String nameImage, String linkWeb, String noteImage) {
         this.urlImage = urlImage;
-        this.nameImgae = nameImgae;
+        this.nameImage = nameImage;
+        this.linkWeb = linkWeb;
         this.noteImage = noteImage;
     }
+    public ImageModel(){
 
-    public ImageModel(String urlImage, String nameImgae, String noteImage, String linkWebsite) {
-        this.urlImage = urlImage;
-        this.nameImgae = nameImgae;
-        this.noteImage = noteImage;
-        this.linkWebsite = linkWebsite;
     }
-
-    public String getLinkWebsite() {
-        return linkWebsite;
-    }
-
-    public void setLinkWebsite(String linkWebsite) {
-        this.linkWebsite = linkWebsite;
-    }
-
-    public ImageModel() {
-    }
-
-    public String getNameImgae() {
-        return nameImgae;
-    }
-
-    public void setNameImgae(String nameImgae) {
-        this.nameImgae = nameImgae;
-    }
-
     public String getUrlImage() {
         return urlImage;
     }
@@ -42,11 +21,35 @@ public class ImageModel {
         this.urlImage = urlImage;
     }
 
+    public String getNameImage() {
+        return nameImage;
+    }
+
+    public void setNameImage(String nameImage) {
+        this.nameImage = nameImage;
+    }
+
+    public String getLinkWeb() {
+        return linkWeb;
+    }
+
+    public void setLinkWeb(String linkWeb) {
+        this.linkWeb = linkWeb;
+    }
+
     public String getNoteImage() {
         return noteImage;
     }
 
     public void setNoteImage(String noteImage) {
         this.noteImage = noteImage;
+    }
+
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
     }
 }

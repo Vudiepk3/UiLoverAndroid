@@ -1,18 +1,18 @@
 package com.example.demo_slideimagewithfirebase;
 
-import android.content.Context;
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
 
 import android.widget.Button;
+import android.widget.Toast;
+
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.constants.ScaleTypes;
 import com.denzcoskun.imageslider.models.SlideModel;
@@ -26,6 +26,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.List;
 
 // Lớp MainActivity kế thừa AppCompatActivity và triển khai NavigationView.OnNavigationItemSelectedListener
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -37,7 +38,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main); // Đặt layout cho activity
         loadImageSlideWithFireBase(); // Gọi phương thức để tải hình ảnh từ Firebase và hiển thị
-        upLoadImage(); // Gọi phương thức để thiết lập sự kiện click cho các nút
+        manageUpLoadImage(); // Gọi phương thức để thiết lập sự kiện click cho các nút
     }
 
     // Phương thức tải hình ảnh từ Firebase và hiển thị trong ImageSlider
@@ -61,31 +62,55 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         });
 
 
-        ImageSlider imageSlider2 = findViewById(R.id.ImageSlide2); // Lấy đối tượng ImageSlider thứ hai từ layout
-        ArrayList<SlideModel> slideModels2 = new ArrayList<>(); // Tạo danh sách để lưu trữ các SlideModel thứ hai
+        ImageSlider imageSlider2 = findViewById(R.id.ImageSlide2);
+        ArrayList<SlideModel> slideModels2 = new ArrayList<>();
+        List<String> linkWebsites = new ArrayList<>(); // Danh sách lưu trữ các link website
+
         databaseReference = FirebaseDatabase.getInstance().getReference("SlideImage");
-        eventListener = databaseReference.addValueEventListener(new ValueEventListener() {
+        databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(DataSnapshot snapshot) {
-                slideModels2.clear(); // Xóa dữ liệu cũ
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                slideModels2.clear(); // Xóa danh sách hình ảnh cũ
+                linkWebsites.clear(); // Xóa danh sách link website cũ
+
+                // Duyệt qua từng mục trong dữ liệu Firebase
                 for (DataSnapshot itemSnapshot : snapshot.getChildren()) {
                     ImageModel imageModel = itemSnapshot.getValue(ImageModel.class);
                     if (imageModel != null && imageModel.getUrlImage() != null) {
-                        slideModels2.add(new SlideModel(imageModel.getUrlImage(), ScaleTypes.FIT)); // Thêm dữ liệu mới
+                        slideModels2.add(new SlideModel(imageModel.getUrlImage(), ScaleTypes.FIT)); // Thêm hình ảnh vào danh sách slide
+                        linkWebsites.add(imageModel.getLinkWeb()); // Thêm link website vào danh sách
                     }
                 }
-                imageSlider2.setImageList(slideModels2, ScaleTypes.FIT); // Cập nhật danh sách hình ảnh trong ImageSlider
+
+                imageSlider2.setImageList(slideModels2, ScaleTypes.FIT); // Cập nhật danh sách hình ảnh
+
+                imageSlider2.setItemClickListener(i -> {
+                    if (i >= 0 && i < linkWebsites.size()) {
+                        String linkWebsite = linkWebsites.get(i);
+                        if (linkWebsite != null && !linkWebsite.isEmpty() && !linkWebsite.equals("No Link Website")) {
+                            try {
+                                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(linkWebsite));startActivity(intent); // Mở trang web bằng Intent
+                            } catch (ActivityNotFoundException e) {
+                                Toast.makeText(MainActivity.this, "Không thể mở đường dẫn web.", Toast.LENGTH_SHORT).show(); // Thông báo nếu không thể mở đường dẫn
+                            }
+                        } else {
+                            Toast.makeText(MainActivity.this, "Không có đường dẫn web.", Toast.LENGTH_SHORT).show(); // Thông báo nếu không có đường dẫn web
+                        }
+                    }
+                });
+
+               // Đóng ProgressDialog sau khi tải xong dữ liệu
             }
 
             @Override
-            public void onCancelled(DatabaseError error) {
-                // Xử lý lỗi nếu cần thiết
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(MainActivity.this, "Failed to load data.", Toast.LENGTH_SHORT).show(); // Thông báo lỗi tải dữ liệu
             }
         });
     }
 
     // Phương thức thiết lập sự kiện click cho các nút
-    private void upLoadImage(){
+    private void manageUpLoadImage(){
         Button imageSlide1 = findViewById(R.id.imageSlide1); // Lấy đối tượng Button từ layout
         imageSlide1.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
