@@ -38,14 +38,17 @@ public class ImageLinkNoteActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_image_link_note);
 
+        // Ánh xạ các thành phần giao diện
         recyclerView = findViewById(R.id.recyclerView);
         fab = findViewById(R.id.fab);
         searchView = findViewById(R.id.search);
         searchView.clearFocus();
 
+        // Thiết lập RecyclerView và GridLayoutManager
         GridLayoutManager gridLayoutManager = new GridLayoutManager(ImageLinkNoteActivity.this, 1);
         recyclerView.setLayoutManager(gridLayoutManager);
 
+        // Hiển thị dialog tiến trình khi đang tải dữ liệu
         AlertDialog.Builder builder = new AlertDialog.Builder(ImageLinkNoteActivity.this);
         builder.setCancelable(false);
         builder.setView(R.layout.progress_layout);
@@ -54,9 +57,12 @@ public class ImageLinkNoteActivity extends AppCompatActivity {
 
         dataList = new ArrayList<>();
 
+        // Khởi tạo adapter và set vào RecyclerView
         adapter = new ImageAdapter(ImageLinkNoteActivity.this, dataList);
         recyclerView.setAdapter(adapter);
-        TextView txtNumberImage =(TextView) findViewById(R.id.txtNumberImage);
+
+        // Hiển thị số lượng ảnh hiện có từ Firebase Realtime Database
+        TextView txtNumberImage = findViewById(R.id.txtNumberImage);
         DatabaseReference categoryRef = FirebaseDatabase.getInstance().getReference().child("SlideImage");
         categoryRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -66,9 +72,11 @@ public class ImageLinkNoteActivity extends AppCompatActivity {
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
+                // Xử lý khi lỗi
             }
         });
+
+        // Lấy dữ liệu từ Firebase Realtime Database và cập nhật vào RecyclerView
         databaseReference = FirebaseDatabase.getInstance().getReference("SlideImage");
         dialog.show();
         eventListener = databaseReference.addValueEventListener(new ValueEventListener() {
@@ -81,15 +89,16 @@ public class ImageLinkNoteActivity extends AppCompatActivity {
                     dataList.add(dataClass);
                 }
                 adapter.notifyDataSetChanged();
-                dialog.dismiss();
+                dialog.dismiss(); // Đóng dialog sau khi tải xong dữ liệu
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                dialog.dismiss();
+                dialog.dismiss(); // Đóng dialog khi có lỗi xảy ra
             }
         });
 
+        // Thiết lập SearchView để tìm kiếm ảnh theo tên
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -98,11 +107,12 @@ public class ImageLinkNoteActivity extends AppCompatActivity {
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                searchList(newText);
+                searchList(newText); // Gọi phương thức để tìm kiếm
                 return true;
             }
         });
 
+        // Thiết lập sự kiện click cho nút thêm mới ảnh
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -112,6 +122,8 @@ public class ImageLinkNoteActivity extends AppCompatActivity {
         });
 
     }
+
+    // Phương thức tìm kiếm trong danh sách ảnh
     public void searchList(String text){
         ArrayList<ImageModel> searchList = new ArrayList<>();
         for (ImageModel dataClass: dataList){
@@ -119,11 +131,14 @@ public class ImageLinkNoteActivity extends AppCompatActivity {
                 searchList.add(dataClass);
             }
         }
-        adapter.searchDataList(searchList);
+        adapter.searchDataList(searchList); // Cập nhật danh sách ảnh sau khi tìm kiếm
     }
+
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        databaseReference.removeEventListener(eventListener);
+        databaseReference.removeEventListener(eventListener); // Hủy đăng ký lắng nghe sự kiện khi hủy activity
     }
+
+
 }
