@@ -54,7 +54,6 @@ public class ImageAdapter extends RecyclerView.Adapter<MyViewHolder> {
                 intent.putExtra("LinkWeb", dataList.get(holder.getAdapterPosition()).getLinkWeb());
                 intent.putExtra("NoteImage", dataList.get(holder.getAdapterPosition()).getNoteImage());
                 intent.putExtra("Key", dataList.get(holder.getAdapterPosition()).getKey());
-
                 context.startActivity(intent);
             }
         });

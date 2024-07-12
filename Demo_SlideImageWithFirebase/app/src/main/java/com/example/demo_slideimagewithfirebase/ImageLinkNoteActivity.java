@@ -87,6 +87,7 @@ public class ImageLinkNoteActivity extends AppCompatActivity {
                     ImageModel dataClass = itemSnapshot.getValue(ImageModel.class);
                     dataClass.setKey(itemSnapshot.getKey());
                     dataList.add(dataClass);
+                    dialog.dismiss();
                 }
                 adapter.notifyDataSetChanged();
                 dialog.dismiss(); // Đóng dialog sau khi tải xong dữ liệu
@@ -139,6 +140,5 @@ public class ImageLinkNoteActivity extends AppCompatActivity {
         super.onDestroy();
         databaseReference.removeEventListener(eventListener); // Hủy đăng ký lắng nghe sự kiện khi hủy activity
     }
-
 
 }

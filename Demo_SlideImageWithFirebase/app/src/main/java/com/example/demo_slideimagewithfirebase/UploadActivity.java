@@ -35,11 +35,11 @@ import java.util.Calendar;
 
 public class UploadActivity extends AppCompatActivity {
 
-    ImageView uploadUrlImage;
-    Button saveButton;
-    EditText uploadNameImage, uploadLinkWeb, uploadNoteImage;
-    String imageURL;
-    Uri uri;
+    private ImageView uploadUrlImage;
+    private Button saveButton;
+    private EditText uploadNameImage, uploadLinkWeb, uploadNoteImage;
+    private String imageURL;
+    private Uri uri;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,7 +95,7 @@ public class UploadActivity extends AppCompatActivity {
     }
 
     // Phương thức lưu dữ liệu lên Firebase Storage và Firebase Realtime Database
-    public void saveData(){
+    private void saveData(){
 
         // Tham chiếu đến Firebase Storage để lưu ảnh
         StorageReference storageReference = FirebaseStorage.getInstance().getReference().child("Slide Images")
@@ -132,7 +132,7 @@ public class UploadActivity extends AppCompatActivity {
     }
 
     // Phương thức lưu dữ liệu vào Firebase Realtime Database
-    public void uploadData(){
+    private void uploadData(){
 
         // Lấy dữ liệu từ các trường nhập liệu
         String nameImage = uploadNameImage.getText().toString();
