@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Demo_Customer_Notification</string>
+    <string name="send">send</string>
+    <string name="todo">todo</string>
+    <string name="text">text</string>
+    <string name="btn1">btn1</string>
+    <string name="btn2">btn2</string>
+    <string name="btn3">btn3</string>
+</resources>
