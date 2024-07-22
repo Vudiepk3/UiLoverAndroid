@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Demo_CustomDialog</string>
+    <string name="success">Success</string>
+    <string name="congratulations_you_have_successfully_create_a_custom_dialog">Congratulations! you have successfully create a custom dialog.</string>
+    <string name="todo">TODO</string>
+    <string name="cancel">Cancel</string>
+    <string name="okay">Okay</string>
+    <string name="alert">Alert</string>
+    <string name="thanks_for_watching">Thanks For Watching!</string>
+    <string name="ok">OK</string>
+</resources>
