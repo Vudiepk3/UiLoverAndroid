@@ -20,13 +20,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
-import java.util.Objects;
 
 public class LoginActivity extends AppCompatActivity {
 
     private EditText loginUsername, loginPassword;
-    private Button loginButton;
-    private TextView signupRedirectText;
     private SignupActivity signupActivity;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,14 +32,15 @@ public class LoginActivity extends AppCompatActivity {
 
         loginUsername = findViewById(R.id.login_username);
         loginPassword = findViewById(R.id.login_password);
-        signupRedirectText = findViewById(R.id.signupRedirectText);
-        loginButton = findViewById(R.id.login_button);
+        TextView signupRedirectText = findViewById(R.id.signupRedirectText);
+        Button loginButton = findViewById(R.id.login_button);
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 try {
                     if (!validateUsername() | !validatePassword()){
+                        Toast.makeText(LoginActivity.this, "Check your data", Toast.LENGTH_SHORT).show();
                     }else if(!isInternetConnected()){
                         Toast.makeText(LoginActivity.this, "Check your internet", Toast.LENGTH_SHORT).show();
                     } else {
@@ -99,6 +97,7 @@ public class LoginActivity extends AppCompatActivity {
                     loginUsername.setError(null);
                     String passwordFromDB = snapshot.child(userUsername).child("password").getValue(String.class);
 
+                    assert passwordFromDB != null;
                     if (passwordFromDB.equals(userPassword)){
                         finish();
                         loginUsername.setError(null);

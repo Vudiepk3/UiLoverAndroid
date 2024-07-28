@@ -55,6 +55,7 @@ public class ProfileActivity extends AppCompatActivity {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     if (snapshot.exists()) {
+                        assert userUsername != null;
                         String nameUser = snapshot.child(userUsername).child("name").getValue(String.class);
                         String emailUser = snapshot.child(userUsername).child("email").getValue(String.class);
                         String passwordUser = snapshot.child(userUsername).child("password").getValue(String.class);
